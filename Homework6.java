@@ -1,23 +1,52 @@
+/*
+Andrew Cascio
+*/
+
 public class Homework6 {
 
 	/* Finish the constructor and create any necessary instance
 	 * variables
 	 */
-	public Homework6(String s, int a, int b, int c) {
+	 private String words;
+	 private int first, second, third;
 
+	public Homework6(String s, int a, int b, int c) {
+			words = s;
+			first = a;
+			second = b;
+			third = c;
 	}
 
 	/* Return true if the stored String comes before the provided
 	 * String lexicographically, return false if it does not
 	 */
-	public boolen isBefore(String other) {
-
+	public boolean isBefore(String other) {
+			if (words.compareTo(other) > 0) {
+					return true;
+			} else {
+					return false;
+			}
 	}
 
 	/* Return the maximum of the stored integers
 	 */
 	public int max() {
+			if (first > second && first > third) {
+					return first;
+			} else if (second > first && second > third) {
+					return second;
+			} else if (third > first && third > second) {
+					return third;
 
+			} else if (second == third && second > first) {
+					return second;
+			} else if (first == third && first > second) {
+					return first;
+			} else if (first == second && first > third) {
+					return third;
+			} else {
+					return -1;
+			}
 	}
 
 	/* Return the middle value of the stored integers. If two numbers
@@ -26,7 +55,19 @@ public class Homework6 {
 	 * to receive full credit
 	 */
 	public int mid() {
-
+			 if ((max() - first == 0) && (max() - second == 0)) {
+					return third;
+			} else if ((max() - first == 0) && (max() - third == 0)) {
+					return second;
+			} else if ((max() - second == 0) && (max() - third == 0)) {
+					return first;
+			} else if (isAscending()) {
+					return second;
+			} else if (first == second && second == third) {
+					return first;
+			} else {
+					return -1;
+			}
 	}
 
 	/* Return true if the stored numbers were provided in ascending
@@ -35,7 +76,11 @@ public class Homework6 {
 	 * >= or =<; instead use < or > and invert them with !
 	 */
 	public boolean isAscending() {
-
+			if (!(first > second) && !(second > third)) {
+					return true;
+			} else {
+					return false;
+			}
 	}
 
 	public static void main(String[] args) {
@@ -87,5 +132,5 @@ public class Homework6 {
 
 		System.exit(exitCode);
 	}
-	
+
 }
